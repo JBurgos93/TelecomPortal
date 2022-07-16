@@ -1,0 +1,5 @@
+package com.skillstorm.telecomportal.model;
+
+public class Device {
+
+}

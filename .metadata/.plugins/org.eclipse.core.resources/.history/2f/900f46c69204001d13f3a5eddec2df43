@@ -1,0 +1,5 @@
+package com.skillstorm.telecomportal.repository;
+
+public interface UserRepository {
+
+}

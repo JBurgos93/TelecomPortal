@@ -1,0 +1,5 @@
+package com.skillstorm.telecomportal.service;
+
+public class DeviceService {
+
+}
