@@ -1,0 +1,37 @@
+<form id="signUp-user" (ngSubmit)="signUp()" #signUpForm>
+    <div class="form-group">
+
+        <label for="FirstName">First Name</label>
+        <input [(ngModel)]="firstName" class="form-control" name="FirstName" id="FirstName" type="text" required maxlength="50" #FirstName="ngModel"/>
+        <div class="alert" *ngIf="FirstName.invalid">
+            <div *ngIf="FirstName.errors?.['required']">First name is required</div>
+        </div>
+
+        <label for="LastName">Last Name</label>
+        <input [(ngModel)]="lastName" class="form-control" name="LastName" id="LastName" type="text" required maxlength="50" #LastName="ngModel"/>
+        <div class="alert" *ngIf="LastName.invalid">
+            <div *ngIf="LastName.errors?.['required']">Last name is required</div>
+        </div>
+
+        <label for="Email">Email</label>
+        <input [(ngModel)]="email" class="form-control" name="Email" id="Email" type="text" required maxlength="50" #Email="ngModel"/>
+        <div class="alert" *ngIf="Email.invalid">
+            <div *ngIf="Email.errors?.['required']">Email is required</div>
+        </div>
+
+        <label for="Password1">New Password</label>
+        <input [(ngModel)]="password1" class="form-control" name="Password1" id="Password1" type="password" required maxlength="50" #Password1="ngModel"/>
+        <div class="alert" *ngIf="Password1.invalid">
+            <div *ngIf="Password1.errors?.['required']">Password is required</div>
+        </div>
+        <label for="Password2">Re-Enter Password</label>
+        <input [(ngModel)]="password2" class="form-control" name="Password2" id="Password2" type="password" required maxlength="50" #Password2="ngModel"/>
+        <div class="alert" *ngIf="Password2.invalid">
+            <div *ngIf="Password2.errors?.['required']">Passwords MUST match</div>
+        </div>
+
+        <div style="margin-top: 5px;">
+            <input class="btn btn-success submit-button" type="submit" value="Sign Up"/>
+        </div>
+    </div>
+</form>

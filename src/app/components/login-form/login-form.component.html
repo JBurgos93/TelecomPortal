@@ -1,14 +1,14 @@
-<form id="login-user" (ngSubmit)="onSubmit()" #loginForm>
+<form id="login-user" (ngSubmit)="login()" #loginForm>
     <div class="form-group">
 
         <label for="Email">Email</label>
-        <input [(ngModel)]="user.email" class="form-control" name="Email" id="Email" type="text" required maxlength="50" #Email="ngModel"/>
+        <input [(ngModel)]="user.email" class="form-control" name="Email" id="Email" type="text" required maxlength="30" #Email="ngModel" />
         <div class="alert" *ngIf="Email.invalid">
             <div *ngIf="Email.errors?.['required']">Email is required</div>
         </div>
 
         <label for="Password">Password</label>
-        <input [(ngModel)]="user.password" class="form-control" name="Password" id="Password" type="password" required maxlength="50" #Password="ngModel"/>
+        <input [(ngModel)]="user.password" class="form-control" name="Password" id="Password" type="password" required maxlength="20" #Password="ngModel"/>
         <div class="alert" *ngIf="Password.invalid">
             <div *ngIf="Password.errors?.['required']">Password is required</div>
         </div>
