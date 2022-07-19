@@ -1,0 +1,21 @@
+//package com.skillstorm.telecomportal.service;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//import org.springframework.transaction.annotation.Transactional;
+//
+//import com.skillstorm.telecomportal.repository.DeviceRepository;
+//
+//@Service
+//@Transactional
+//public class DeviceService {
+//	
+//	@Autowired
+//	private final DeviceRepository deviceRepositiry;
+//
+//	public DeviceService(DeviceRepository deviceRepositiry) {
+//		this.deviceRepositiry = deviceRepositiry;
+//	}
+//	
+//	
+//}

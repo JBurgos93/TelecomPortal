@@ -1,0 +1,5 @@
+package com.skillstorm.telecomportal.exception;
+
+public class UserNotFoundException {
+
+}

@@ -1,0 +1,13 @@
+package com.skillstorm.telecomportal;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class TelecomportalApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(TelecomportalApplication.class, args);
+	}
+
+}
