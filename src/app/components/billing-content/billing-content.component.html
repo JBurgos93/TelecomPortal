@@ -1,10 +1,29 @@
 <div class="card">
     <div class="card-header">
-      Billing
+        Billing
     </div>
     <div class="card-body">
-      <h5 class="card-title">Billing</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a [routerLink]="['/billing']" class="btn btn-primary">View Details</a>
+        <h5 class="card-title">Billing</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <button (click)="showBilling()" class="btn btn-primary">View Details</button>
     </div>
-  </div>
+</div>
+<!-- Start of Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Monthly Billing Summary</h4>
+            </div>
+            <!-- Start of Form -->
+            <div class="modal-body">
+                <app-billing-page-content></app-billing-page-content>
+            </div>
+            <!-- End of Form -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="hide()"> Close </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal -->
