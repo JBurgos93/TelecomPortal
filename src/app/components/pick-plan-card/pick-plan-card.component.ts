@@ -49,8 +49,6 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     checkButtonEnabling = () => {
-        console.log(`this.currentDevices = ${<Number>this.currentDevices}`);
-        console.log(`this.currentDevices <= 0 = ${<Number>this.currentDevices <= 0}`);
         if(<Number>this.currentDevices <= 0){
             this.enableRem = false;
         } else{
@@ -72,7 +70,7 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     deletePlan = () => {
-        this.userPlansService.removePlan(<String>this.name);
+        this.userPlansService.removePlan(<Number>this.id);
     }
 
     hide1 = () => {

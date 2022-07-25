@@ -2,7 +2,7 @@
     <div class="card-body">
         <h5 class="card-title">Select A New Phone Plan</h5>
         <div style="display: inline-block; grid-row:auto;">
-            <app-new-plans-card style="width: 18rem; float: left; padding:10px" *ngFor="let phonePlan of phonePlans" [name]="phonePlan.name" [cost]="phonePlan.cost" [description]="phonePlan.description" [maxDevices]="phonePlan.maxDevices"></app-new-plans-card>
+            <app-new-plans-card style="width: 18rem; float: left; padding:10px" *ngFor="let phonePlan of phonePlans" [id]="phonePlan.id" [name]="phonePlan.name" [cost]="phonePlan.cost" [description]="phonePlan.description" [maxDevices]="phonePlan.maxDevices" [enableAdd]="phonePlan.enableAdd"></app-new-plans-card>
         </div>
     </div>
 </div>
