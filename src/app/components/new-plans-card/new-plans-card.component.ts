@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserPlansService } from 'src/app/services/user-plans.service';
 
 @Component({
   selector: 'app-new-plans-card',
@@ -11,9 +12,18 @@ export class NewPlansCardComponent implements OnInit {
     @Input() cost?: String;
     @Input() description?: String;
     @Input() maxDevices?: Number;
-    constructor() { }
 
-    ngOnInit(): void {
+    public enableAdd: Boolean = true;
+
+    constructor(private userPlansService: UserPlansService) {
     }
 
+    ngOnInit(): void {
+        this.enableAdd = this.userPlansService.findDuplicate(<String>this.name);
+    }
+
+    addPlan(){
+        this.userPlansService.addPlan(<String>this.name);
+        this.enableAdd = false;
+    }
 }

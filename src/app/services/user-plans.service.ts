@@ -7,6 +7,7 @@ import { PhonePlan } from '../models/phone-plan.model';
 })
 export class UserPlansService {
 
+    // List of all phone plans
     private phonePlans: PhonePlan[] = [
         { id: 1, name: "Family Plan 1", cost: "$60.00", description: "Affordable for the whole family.", currentDevices: 0, maxDevices: 8},
         { id: 2, name: "Family Plan 2", cost: "$80.00", description: "Great value for the price, I guess.", currentDevices: 0, maxDevices: 12},
@@ -15,6 +16,7 @@ export class UserPlansService {
         { id: 5, name: "Individual Plan 2", cost: "$20.00", description: "Twice the cost, twice the coverage.", currentDevices: 0, maxDevices: 4},
         { id: 6, name: "Individual Plan 3", cost: "$30.00", description: "Why do you have 6 devices/tablets?.", currentDevices: 0, maxDevices: 6}
     ];
+    // List of the user's active phone plans
     private activePlans: PhonePlan[] = [
         { id: 1, name: "Family Plan 1", cost: "$60.00", description: "Affordable for the whole family.", currentDevices: 0, maxDevices: 8},
         { id: 6, name: "Individual Plan 3", cost: "$30.00", description: "Why do you have 6 devices/tablets?.", currentDevices: 0, maxDevices: 6}
@@ -58,6 +60,16 @@ export class UserPlansService {
             this.activePlans[indexOfPlan].currentDevices = <number>this.activePlans[indexOfPlan].currentDevices - 1;
         }
     }
+    findDuplicate(name: String) : Boolean{
+        const indexOfPlan = this.activePlans.findIndex(plan => {
+            return plan.name == name;
+        });
+        if(indexOfPlan !== -1){
+            return false;
+        } else{
+            return true;
+        }
+    }
 
     getAllPlans() : PhonePlan[] {
         return this.phonePlans;
@@ -66,6 +78,14 @@ export class UserPlansService {
         return this.activePlans;
     }
 
+    addPlan(name: String){
+        const indexOfPlan = this.phonePlans.findIndex(plan => {
+            return plan.name == name;
+        });
+        if(indexOfPlan !== -1){
+            this.activePlans.push(this.phonePlans[indexOfPlan]);
+        }
+    }
     removePlan(name: String) {
         console.log("This is the removePlan() method.");
         // this.activePlans.forEach(plan => {
@@ -75,9 +95,9 @@ export class UserPlansService {
         // });
         const indexOfPlan = this.activePlans.findIndex(plan => {
             return plan.name == name;
-        })
+        });
         if(indexOfPlan !== -1){
-            this.activePlans = this.activePlans.splice(indexOfPlan,1);
+            this.activePlans = this.activePlans.splice(indexOfPlan-1,1);
         }
     }
 }

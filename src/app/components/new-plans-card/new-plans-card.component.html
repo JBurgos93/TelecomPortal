@@ -4,6 +4,6 @@
       <p class="card-text">{{description}}</p>
       <p class="card-text">Price: {{cost}}</p>
       <p class="card-text">Max Devices: {{maxDevices}}</p>
-      <button [routerLink]="['/home']" class="btn btn-primary">Add New Plan</button>
+      <button (click)="addPlan()" class="btn btn-primary" *ngIf="enableAdd">Add Plan</button>
     </div>
   </div>
