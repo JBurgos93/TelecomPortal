@@ -1,0 +1,50 @@
+<!-- <button
+  style="margin: 50px; padding: 10px"
+  type="button"
+  class="btn btn-primary"
+  (click)="openPopup()">Show Data
+</button> -->
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display': displayStyle}"
+  >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">GeeksForGeeks</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Start of Form -->
+        <form id="add-device" (ngSubmit)="addDevice()" #addDeviceForm>
+            <div class="form-group">
+        
+                <label for="ID">Phone ID</label>
+                <input [(ngModel)]="id" class="form-control" name="ID" id="ID" type="text" required maxlength="30" #ID="ngModel"/>
+                <div class="alert" *ngIf="ID.invalid">
+                    <div *ngIf="ID.errors?.['required']">Phone ID is required</div>
+                </div>
+        
+                <label for="PhoneNumber">Phone Number</label>
+                <input [(ngModel)]="phoneNumber" class="form-control" name="PhoneNumber" id="PhoneNumber" type="tel" required maxlength="30" #PhoneNumber="ngModel"/>
+                <div class="alert" *ngIf="PhoneNumber.invalid">
+                    <div *ngIf="PhoneNumber.errors?.['required']">Phone number is required</div>
+                </div>
+
+                <div style="margin-top: 5px;">
+                    <input class="btn btn-success submit-button" type="submit" value="Add Device"/>
+                </div>
+            </div>
+        </form>
+        <!-- End of Form -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+                (click)="addDevice()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

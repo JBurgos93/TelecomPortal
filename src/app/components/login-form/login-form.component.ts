@@ -12,7 +12,10 @@ export class LoginFormComponent implements OnInit {
     
     //user = new User('','');
     
-    user: User = new User('','');
+    user: User = {
+        email: "",
+        password: ""
+    };
     
     //private user = {
     //    email: String,

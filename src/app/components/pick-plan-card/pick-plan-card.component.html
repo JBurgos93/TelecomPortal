@@ -1,0 +1,82 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">{{description}}</p>
+        <p class="card-text">Monthly Cost: {{cost}}</p>
+        <p class="card-text">Devices: {{currentDevices}} / {{maxDevices}}</p>
+        <div style="display: inline-block; grid-row:auto;">
+            <button (click)="addDevice()" class="btn btn-primary" *ngIf="enableAdd">Add Device</button>
+            <button (click)="removeDevice()" class="btn btn-danger" *ngIf="enableRem">Remove Device</button>
+            <button (click)="deletePlan()" class="btn btn-warning">Delete Plan</button>
+        </div>
+    </div>
+</div>
+<!-- Start of Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle1}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Device</h4>
+            </div>
+            <!-- Start of Form -->
+            <div class="modal-body">
+                <form id="add-device" (ngSubmit)="submitDevice()" #addDeviceForm>
+                    <div class="form-group">
+                
+                        <label for="ID">Phone ID</label>
+                        <input [(ngModel)]="phoneID" class="form-control" name="ID" id="ID" type="text" required maxlength="30" #ID="ngModel"/>
+                        <div class="alert" *ngIf="ID.invalid">
+                            <div *ngIf="ID.errors?.['required']">Phone ID is required</div>
+                        </div>
+                
+                        <label for="PhoneNumber">Phone Number</label>
+                        <input [(ngModel)]="phoneNumber" class="form-control" name="PhoneNumber" id="PhoneNumber" type="tel" required maxlength="30" #PhoneNumber="ngModel"/>
+                        <div class="alert" *ngIf="PhoneNumber.invalid">
+                            <div *ngIf="PhoneNumber.errors?.['required']">Phone number is required</div>
+                        </div>
+
+                        <div style="margin-top: 5px;">
+                            <input class="btn btn-success submit-button" type="submit" value="Add Device"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End of Form -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="hide1()"> Close </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal -->
+
+<!-- Start of Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle2}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Remove Device</h4>
+            </div>
+            <!-- Start of Form -->
+            <div class="modal-body">
+                <form id="remove-device" (ngSubmit)="submitRemoveDevice()" #submitRemoveDeviceForm>
+                    <div class="form-group">
+
+                        <select [(ngModel)]="phoneID" class="form-control" placeholder="Select Device"  name="PhoneID" id="PhoneID" #PhoneID="ngModel">
+                            <option *ngFor="let device of devices" (value)="device.id">{{device.id}} : {{device.phoneNumber}}</option>
+                        </select>
+
+                        <div style="margin-top: 5px;">
+                            <input class="btn btn-success submit-button" type="submit" value="Remove Device"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End of Form -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="hide2()"> Close </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal -->

@@ -23,6 +23,15 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
 import { PlanPageContentComponent } from './components/plan-page-content/plan-page-content.component';
 import { BillingPageContentComponent } from './components/billing-page-content/billing-page-content.component';
+import { PickPlanCardComponent } from './components/pick-plan-card/pick-plan-card.component';
+import { ViewPlansContainerComponent } from './components/view-plans-container/view-plans-container.component';
+import { NewPlansContainerComponent } from './components/new-plans-container/new-plans-container.component';
+import { NewPlansCardComponent } from './components/new-plans-card/new-plans-card.component';
+import { UserPlansService } from './services/user-plans.service';
+import { AddDeviceModalComponent } from './components/add-device-modal/add-device-modal.component';
+import { UserDataService } from './services/user-data.service';
+import { UserDevicesService } from './services/user-devices.service';
+import { DeviceModalService } from './services/device-modal.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +52,12 @@ import { BillingPageContentComponent } from './components/billing-page-content/b
     SignUpComponent,
     SignUpFormComponent,
     PlanPageContentComponent,
-    BillingPageContentComponent
+    BillingPageContentComponent,
+    PickPlanCardComponent,
+    ViewPlansContainerComponent,
+    NewPlansContainerComponent,
+    NewPlansCardComponent,
+    AddDeviceModalComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +66,12 @@ import { BillingPageContentComponent } from './components/billing-page-content/b
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UserPlansService,
+    UserDataService,
+    UserDevicesService,
+    DeviceModalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
