@@ -1,0 +1,19 @@
+
+#slideShow {
+    padding-bottom: 20px;
+}
+.slideShow-container{
+    width: 60%;
+    height: 30%;
+}
+
+/* .item-container {
+    position: relative;
+    width: 995px;
+    margin: 0 auto;
+    will-change: transform;
+}
+.myImage{
+    max-width: 100;
+    max-height: 100;
+} */

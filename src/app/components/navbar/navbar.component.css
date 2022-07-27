@@ -2,3 +2,15 @@
     float: right;
     width: max-content;
 }
+/*This is modifying the btn-primary colors but you could create your own .btn-something class as well*/
+
+/* .btn-light {
+    color: #fff;
+    background-color: #0495c9;
+    border-color: #357ebd;
+} */
+.btn-light:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color:lightgreen;
+    /* border-color: #285e8e; */
+}
