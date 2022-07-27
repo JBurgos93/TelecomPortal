@@ -9,13 +9,13 @@ import { UserDevicesService } from 'src/app/services/user-devices.service';
 })
 export class AddDeviceModalComponent implements OnInit {
 
-    public id?: String;
+    public id?: Number;
     public phoneNumber?: Number;
     public phonePlanID?: Number;
     displayStyle = "none";
     //public show = false;
 
-    constructor(private deviceModalService: DeviceModalService, private userDevicesService: UserDevicesService) { }
+    constructor(private userDevicesService: UserDevicesService) { }
 
     ngOnInit(): void { }
 
@@ -28,6 +28,6 @@ export class AddDeviceModalComponent implements OnInit {
     //     this.deviceModalService.setShow(false);
     // }
     addDevice(){
-        this.userDevicesService.createDevice(<String>this.id, <Number>this.phonePlanID, <Number>this.phoneNumber)
+        this.userDevicesService.createDevice(<number>this.id, <number>this.phonePlanID, <Number>this.phoneNumber)
     }
 }

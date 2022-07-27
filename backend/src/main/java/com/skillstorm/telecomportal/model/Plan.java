@@ -16,12 +16,13 @@ public class Plan {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "PLAN_ID", unique = true)
+	@Column(unique = true)
 	private Integer id;
 	private String name;
-	private Integer price;
-	private Integer deviceLimit;
+	private Integer cost;
 	private String description;
+	private Integer currentDevices;
+	private Integer maxDevices;
 	@OneToOne(mappedBy = "plan", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
 	private Device device;
@@ -30,12 +31,13 @@ public class Plan {
 	
 	}
 
-	public Plan(Integer id, String name, Integer price, Integer deviceLimit, String description) {
+	public Plan(Integer id, String name, Integer cost, String description, Integer currentDevices, Integer maxDevices) {
 		this.id = id;
 		this.name = name;
-		this.price = price;
-		this.deviceLimit = deviceLimit;
+		this.cost = cost;
 		this.description = description;
+		this.currentDevices = currentDevices;
+		this.maxDevices = maxDevices;
 	}
 
 	public Integer getId() {
@@ -54,20 +56,12 @@ public class Plan {
 		this.name = name;
 	}
 
-	public Integer getPrice() {
-		return price;
+	public Integer getCost() {
+		return cost;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
-	public Integer getDeviceLimit() {
-		return deviceLimit;
-	}
-
-	public void setDeviceLimit(Integer deviceLimit) {
-		this.deviceLimit = deviceLimit;
+	public void setCost(Integer cost) {
+		this.cost = cost;
 	}
 
 	public String getDescription() {
@@ -78,10 +72,27 @@ public class Plan {
 		this.description = description;
 	}
 
+	public Integer getCurrentDevices() {
+		return currentDevices;
+	}
+
+	public void setCurrentDevices(Integer currentDevices) {
+		this.currentDevices = currentDevices;
+	}
+
+	public Integer getMaxDevices() {
+		return maxDevices;
+	}
+
+	public void setMaxDevices(Integer maxDevices) {
+		this.maxDevices = maxDevices;
+	}
+	
+
 	@Override
 	public String toString() {
-		return "Plan [id=" + id + ", name=" + name + ", price=" + price + ", deviceLimit=" + deviceLimit
-				+ ", description=" + description + "]";
+		return "Plan [id=" + id + ", name=" + name + ", cost=" + cost + ", currentDevices=" + currentDevices
+		+ ", maxDevices=" + maxDevices+ ", description=" + description + "]";
 	}
 	
 }

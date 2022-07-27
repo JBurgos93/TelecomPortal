@@ -1,7 +1,7 @@
 export interface PhonePlan {
     id: Number;
     name: String;
-    cost: String;
+    cost: Number;
     description: String;
     currentDevices: Number;
     maxDevices: Number;

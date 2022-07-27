@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	void deleteUserById(Integer id);
 	
-	@Query("SELECT SUM(p.price) FROM Device d JOIN d.plan p WHERE d.user.id = :id")
+	@Query("SELECT SUM(p.cost) FROM Device d JOIN d.plan p WHERE d.user.id = :id")
 	Integer monthlyBill(@Param("id") Integer id);
 	
 	boolean existsByEmail(String email);

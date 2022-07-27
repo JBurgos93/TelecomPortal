@@ -1,5 +1,6 @@
 export interface Device{
     id: String;
-    phonePlanID: Number;
+    plan: Number;
     phoneNumber: Number;
+    userId: Number;
 }

@@ -12,13 +12,19 @@ export class UserDevicesService {
     
     constructor(private http: HttpClient) { }
 
-    createDevice(id: String, phonePlanID: Number, phoneNumber: Number) : void {
-        const device: Device = {
+    createDevice(id: number, planId: number, phoneNumber: Number): Observable<Device> {
+        let user = JSON.parse(localStorage.getItem("user")  || '{}');
+        let plans = JSON.parse(localStorage.getItem("plans")   || '{}');
+        let plan = plans[planId];
+        const device = {
             id: id,
-            phonePlanID: phonePlanID,
-            phoneNumber: phoneNumber
+            phoneNumber: phoneNumber,
+            user,
+            plan
         }
-        this.devices.push(device);
+        console.log("create devices called");
+        console.log(JSON.stringify(device));
+        return this.http.post<Device>("http://localhost:8080/device/add", JSON.stringify(device));
     }
 
     getDevices(): Observable<Device[]>{
@@ -26,12 +32,7 @@ export class UserDevicesService {
         return this.http.get<Device[]>("http://localhost:8080/device/all/user/" + user.id);
     }
 
-    deleteDevice(id: String){
-        const indexOfDevice = this.devices.findIndex(device => {
-            return device.id == id;
-        })
-        if(indexOfDevice !== -1){
-            this.devices = this.devices.splice(indexOfDevice,1);
-        }
+    deleteDevice(id: Number): Observable<unknown>{
+        return this.http.delete("http://localhost:8080/device/" + id);
     }
 }

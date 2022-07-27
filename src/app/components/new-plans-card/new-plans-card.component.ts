@@ -10,7 +10,7 @@ export class NewPlansCardComponent implements OnInit {
 
     @Input() id?: Number;
     @Input() name?: String;
-    @Input() cost?: String;
+    @Input() cost?: Number;
     @Input() description?: String;
     @Input() maxDevices?: Number;
     @Input() enableAdd?: Boolean;

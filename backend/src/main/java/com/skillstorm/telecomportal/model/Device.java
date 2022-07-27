@@ -21,12 +21,12 @@ public class Device  implements Serializable {
 	@Id
 	@Column(unique = true)
 	private Long id;
-	private String phoneNum;
+	private Long phoneNumber;
 	@ManyToOne(optional = false)
     @JoinColumn(name = "USER_ID", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private User user;
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
     @JoinColumn(name = "PLAN_ID", nullable = false)
 	private Plan plan;
 	
@@ -34,10 +34,10 @@ public class Device  implements Serializable {
 
 	}
 
-	public Device(Long id, String phoneNum, User user, Plan plan) {
+	public Device(Long id, Long phoneNumber, User user, Plan plan) {
 
 		this.id = id;
-		this.phoneNum = phoneNum;
+		this.phoneNumber = phoneNumber;
 		this.user = user;
 		this.plan = plan;
 	}
@@ -50,24 +50,24 @@ public class Device  implements Serializable {
 		this.id = id;
 	}
 
-	public String getPhoneNum() {
-		return phoneNum;
+	public Long getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public User getUser() {
-		return user;
+	public Integer getUser() {
+		return user.getId();
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public Plan getPlan() {
-		return plan;
+	public Integer getPlan() {
+		return plan.getId();
 	}
 
 	public void setPlan(Plan plan) {
@@ -76,7 +76,7 @@ public class Device  implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Device [id=" + id + ", phoneNum=" + phoneNum + ", user=" + user + ", plan=" + plan + "]";
+		return "Device [id=" + id + ", phoneNumber=" + phoneNumber + ", user=" + user + ", plan=" + plan + "]";
 	}
 	
 }

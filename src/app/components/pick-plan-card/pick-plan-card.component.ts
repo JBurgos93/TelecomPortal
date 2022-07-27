@@ -17,7 +17,7 @@ export class PickPlanCardComponent implements OnInit {
 
     @Input() id?: Number;
     @Input() name?: String;
-    @Input() cost?: String;
+    @Input() cost?: Number;
     @Input() description?: String;
     @Input() currentDevices?: Number;
     @Input() maxDevices?: Number;
@@ -29,7 +29,7 @@ export class PickPlanCardComponent implements OnInit {
     public displayStyle2?: String = "none";
 
     public phoneNumber?: Number;
-    public phoneID?: String;
+    public phoneID?: Number;
 
     constructor(private userPlansService: UserPlansService, private deviceModalService: DeviceModalService, private userDevicesService: UserDevicesService){
     }
@@ -38,17 +38,20 @@ export class PickPlanCardComponent implements OnInit {
         this.userDevicesService.getDevices().subscribe(result => { 
             this.devices = result;
             console.log(this.devices);
+            //this.getDevices();
         });
         this.checkButtonEnabling();}
 
-    getDevices = () => {
-        let temp: Device[] = this.devices!;
-        temp.forEach(device => {
-            if(device.phonePlanID == this.id){
-                this.devices?.push(device);
-            }
-        });
-    }
+    // getDevices = () => {
+    //     let temp: Device[] = this.devices!;
+    //     console.log("in here")
+    //     temp.forEach(device => {
+    //         if(device.plan == this.id){
+    //             console.log("here?")
+    //             this.devices?.push(device);
+    //         }
+    //     });
+    // }
 
     checkButtonEnabling = () => {
         if(<Number>this.currentDevices <= 0){
@@ -72,7 +75,7 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     deletePlan = () => {
-        this.userPlansService.removePlan(<String>this.name); // this is where the splice update is overriden
+        this.userPlansService.removePlan(<Number>this.id);
     }
 
     hide1 = () => {
@@ -84,20 +87,20 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     submitRemoveDevice = () => {
-        this.userDevicesService.deleteDevice(<String>this.phoneID);
+        this.userDevicesService.deleteDevice(<Number>this.phoneID);
         this.displayStyle2 = "none";
         this.userPlansService.decDeviceCount(<Number>this.id);
         this.currentDevices = <number>this.currentDevices - 1;
-        this.getDevices();
+        //this.getDevices();
         this.checkButtonEnabling();
     }
 
     submitDevice = () => {
-        this.userDevicesService.createDevice(<String>this.phoneID, <Number>this.id, <Number>this.phoneNumber)
+        this.userDevicesService.createDevice(<number>this.phoneID, <number>this.id, <Number>this.phoneNumber)
         this.displayStyle1 = "none";
         this.userPlansService.incDeviceCount(<Number>this.id);
         this.currentDevices = <number>this.currentDevices + 1;
-        this.getDevices();
+        //this.getDevices();
         this.checkButtonEnabling();
     }
 }
