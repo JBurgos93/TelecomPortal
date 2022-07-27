@@ -8,22 +8,18 @@ import { UserPlansService } from 'src/app/services/user-plans.service';
 })
 export class NewPlansCardComponent implements OnInit {
 
+    @Input() id?: Number;
     @Input() name?: String;
     @Input() cost?: String;
     @Input() description?: String;
     @Input() maxDevices?: Number;
+    @Input() enableAdd?: Boolean;
 
-    public enableAdd: Boolean = true;
+    constructor(private userPlansService: UserPlansService) { }
 
-    constructor(private userPlansService: UserPlansService) {
-    }
-
-    ngOnInit(): void {
-        this.enableAdd = this.userPlansService.findDuplicate(<String>this.name);
-    }
+    ngOnInit(): void { }
 
     addPlan(){
-        this.userPlansService.addPlan(<String>this.name);
-        this.enableAdd = false;
+        this.userPlansService.addPlan(<Number>this.id);
     }
 }

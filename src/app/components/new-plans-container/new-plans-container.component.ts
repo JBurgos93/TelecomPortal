@@ -9,6 +9,7 @@ import { PhonePlan } from 'src/app/models/phone-plan.model';
 export class NewPlansContainerComponent implements OnInit {
 
     public phonePlans: PhonePlan[] = [];
+    public enableAddBtns: Boolean[] = [];
 
     constructor(private userPlansService: UserPlansService) { 
     }

@@ -5,4 +5,5 @@ export interface PhonePlan {
     description: String;
     currentDevices: Number;
     maxDevices: Number;
+    enableAdd: Boolean;
 }
