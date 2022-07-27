@@ -1,16 +1,16 @@
 <div class="uk-container" id="slideShow">
     <div class="uk-position-relative uk-visible-toggle uk-light uk-container slideShow-container" tabindex="-1"
-        uk-slideshow="autoplay: min-height: 300px; max-height: 400px; animation: fade;">
+        uk-slideshow="autoplay: true; autoplay-interval: 3000; min-height: 300px; max-height: 400px; ratio: 954:400; animation: fade;">
 
-        <ul class="uk-slideshow-items">
+        <ul class="uk-slideshow-items" style="border-radius: 20px;">
             <li>
-                <img src="../../../assets/beach-s.jpg" alt="" uk-cover>
+                <img src="../../../assets/planimage1.png" alt="">
             </li>
             <li>
-                <img src="../../../assets/forest-s.jpg" alt="" uk-cover>
+                <img src="../../../assets/planimage2.png" alt="" uk-cover>
             </li>
             <li>
-                <img src="../../../assets/park-s.jpg" alt="" uk-cover>
+                <img src="../../../assets/planimage1.png" alt="" uk-cover>
             </li>
         </ul>
             <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
@@ -18,5 +18,9 @@
                 <li data-uk-slideshow-item="1"><a href=""></a></li>
                 <li data-uk-slideshow-item="2"><a href=""></a></li>
             </ul>
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" uk-slidenav-previous
+                uk-slideshow-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" uk-slidenav-next
+                uk-slideshow-item="next"></a>
     </div>
 </div>

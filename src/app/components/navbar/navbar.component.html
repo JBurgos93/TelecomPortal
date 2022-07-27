@@ -6,9 +6,9 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/home']">Home (temporary button)</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a *ngIf="loggedIn" class="nav-link disabled">Hello, {{ user.firstname }}</a>
             </li>
@@ -21,11 +21,11 @@
         </li>
         <li class="nav-item">
             <Button class="nav-link align-right btn btn-light" style="margin-left: 20px; margin-right: 20px;" [routerLink]="['/login']">Login</Button>
-            <Button *ngIf="!loggedIn" class="nav-link align-right" [routerLink]="['/sign-up']">Sign Up</Button>
+            <!-- <Button *ngIf="!loggedIn" class="nav-link align-right" [routerLink]="['/sign-up']">Sign Up</Button> -->
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <Button *ngIf="!loggedIn" class="nav-link align-right" [routerLink]="['/login']">Login</Button>
-        </li>
+        </li> -->
         <li class="nav-item">
             <Button *ngIf="loggedIn" class="nav-link align-right" (click)="logoutUser()">Logout</Button>
         </li>

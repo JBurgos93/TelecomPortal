@@ -72,7 +72,7 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     deletePlan = () => {
-        this.userPlansService.removePlan(<String>this.name); // this is where the splice update is overriden
+        this.userPlansService.removePlan(<Number>this.id); // this is where the splice update is overriden
     }
 
     hide1 = () => {
