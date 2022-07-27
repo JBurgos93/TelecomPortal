@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skillstorm.telecomportal.exception.UserNotFoundException;
-import com.skillstorm.telecomportal.model.Plan;
 import com.skillstorm.telecomportal.model.User;
 import com.skillstorm.telecomportal.repository.UserRepository;
 
@@ -25,9 +24,9 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
-	public User getUser(Integer id) {
-		return userRepository.findUserById(id)
-				.orElseThrow(() -> new UserNotFoundException("User by ID " + id + " was not found"));
+	public User getUser(String email) {
+		return userRepository.findUserByEmail(email)
+				.orElseThrow(() -> new UserNotFoundException("User with email " + email + " was not found"));
 	}
 	
 	public List<User> getAllUsers() {
@@ -40,6 +39,10 @@ public class UserService {
 	
 	public void deleteUser(Integer id) {
 		userRepository.deleteUserById(id);
+	}
+
+	public boolean existsByEmail(String email) {
+		return userRepository.existsByEmail(email);
 	}
 	
 	public Integer monthlyBill(Integer id) {

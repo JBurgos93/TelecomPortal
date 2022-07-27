@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.telecomportal.model.Device;
-import com.skillstorm.telecomportal.model.Plan;
-import com.skillstorm.telecomportal.model.User;
 import com.skillstorm.telecomportal.service.DeviceService;
 
 @RestController
@@ -56,9 +54,9 @@ public class DeviceController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 	
-	@GetMapping("/all/user")
-	public ResponseEntity<List<Device>> getAllDevicesByUser(@RequestBody User user) {
-		List<Device> devices = deviceService.getAllDevicesByUser(user);
+	@GetMapping("/all/user/{id}")
+	public ResponseEntity<List<Device>> getAllDevicesByUser(@PathVariable Integer id) {
+		List<Device> devices = deviceService.getAllDevicesByUser(id);
 		return new ResponseEntity<>(devices, HttpStatus.OK);
 	}
 

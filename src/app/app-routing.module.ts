@@ -13,10 +13,7 @@ import { AuthGuardService as AuthGuard } from './auth-guard.service';
 
 const routes: Routes = [
     {
-        path: '', component: LandingPageComponent
-    },
-    {
-        path: 'home', component: HomePageComponent, canActivate : [AuthGuard]
+        path: 'home', component: HomePageComponent, canActivate: [AuthGuard]
     },
     {
         path: 'login', component: LoginPageComponent
@@ -29,6 +26,9 @@ const routes: Routes = [
     },
     {
         path: 'sign-up', component: SignUpComponent
+    },
+    {
+        path: '', component: LandingPageComponent
     },
     { 
         path: '*', component: ErrorPageComponent // Doesn't work?

@@ -7,11 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skillstorm.telecomportal.exception.DeviceNotFoundException;
-import com.skillstorm.telecomportal.exception.PlanNotFoundException;
 import com.skillstorm.telecomportal.exception.UserNotFoundException;
 import com.skillstorm.telecomportal.model.Device;
-import com.skillstorm.telecomportal.model.Plan;
-import com.skillstorm.telecomportal.model.User;
 import com.skillstorm.telecomportal.repository.DeviceRepository;
 
 @Service
@@ -47,9 +44,9 @@ public class DeviceService {
 		deviceRepository.deleteDeviceById(id);
 	}
 	
-	public List<Device> getAllDevicesByUser(User user) {
-		return deviceRepository.findByUserId(user.getId())
-				.orElseThrow(() -> new UserNotFoundException("User by ID " + user.getId() + " was not found"));
+	public List<Device> getAllDevicesByUser(Integer id) {
+		return deviceRepository.findByUserId(id)
+				.orElseThrow(() -> new UserNotFoundException("User by ID " + id + " was not found"));
 	}
 	
 }

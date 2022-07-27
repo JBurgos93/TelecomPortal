@@ -12,11 +12,14 @@ import com.skillstorm.telecomportal.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-	Optional<User> findUserById(Integer id);
+    User findByEmail(String email);
+
+	Optional<User> findUserByEmail(String email);
 	
 	void deleteUserById(Integer id);
 	
 	@Query("SELECT SUM(p.price) FROM Device d JOIN d.plan p WHERE d.user.id = :id")
 	Integer monthlyBill(@Param("id") Integer id);
 	
+	boolean existsByEmail(String email);
 }
