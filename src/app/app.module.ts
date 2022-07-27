@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -32,6 +33,7 @@ import { AddDeviceModalComponent } from './components/add-device-modal/add-devic
 import { UserDataService } from './services/user-data.service';
 import { UserDevicesService } from './services/user-devices.service';
 import { DeviceModalService } from './services/device-modal.service';
+import { SlideshowComponent } from './components/slideshow/slideshow.component';
 
 @NgModule({
   declarations: [
@@ -57,14 +59,15 @@ import { DeviceModalService } from './services/device-modal.service';
     ViewPlansContainerComponent,
     NewPlansContainerComponent,
     NewPlansCardComponent,
-    AddDeviceModalComponent
+    AddDeviceModalComponent,
+    SlideshowComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     UserPlansService,
@@ -72,6 +75,8 @@ import { DeviceModalService } from './services/device-modal.service';
     UserDevicesService,
     DeviceModalService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
