@@ -1,4 +1,4 @@
-<form id="signUp-user" (ngSubmit)="signUp()" #signUpForm>
+<!-- <form id="signUp-user" (ngSubmit)="signUp()" #signUpForm>
     <div class="form-group">
 
         <label for="FirstName">First Name</label>
@@ -34,4 +34,60 @@
             <input class="btn btn-success submit-button" type="submit" value="Sign Up"/>
         </div>
     </div>
-</form>
+</form> -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="regForm" (ngSubmit)="register()">
+
+                <div class="form-group">
+                    <label for="firstname" class="fa fa-user"></label>
+                    <input type="text" placeholder="First Name" formControlName="firstname">
+                    <span class="text-danger" *ngIf="regForm.controls['firstname'].errors && regForm.controls['firstname'].touched">
+                        <br>First Name is Required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname" class="fa fa-user"></label>
+                    <input type="text" placeholder="Last Name" formControlName="lastname">
+                    <span class="text-danger" *ngIf="regForm.controls['lastname'].errors && regForm.controls['lastname'].touched">
+                        <br>Last Name is Required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="fa fa-envelope"></label>
+                    <input type="email" placeholder="Email Address" formControlName="email">
+                    <span class="text-danger" *ngIf="regForm.controls['email'].errors && regForm.controls['email'].touched">
+                        <br>Invalid Email Address
+                    </span>
+                    <span class="text-danger" *ngIf="emailExists"><br>User with such Email exists</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="fa fa-lock"></label>
+                    <input type="password" placeholder="Password" formControlName="password">
+                    <span class="text-danger" *ngIf="regForm.controls['password'].errors && regForm.controls['password'].touched">
+                        <br>Atleast 6 character Password is Required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="fa fa-lock"></label>
+                    <input type="password" placeholder="Re-Enter Password" formControlName="confirmPassword">
+                    <span class="text-danger" *ngIf="regForm.controls['password'].errors?.['mustMatch']">
+                        <br>Passwords MUST match
+                    </span>
+                </div>
+
+                <div class="text-center">
+                    <button id="submitButton" type="submit" class="btn btn-primary" [disabled]="!regForm.valid">
+                        Register
+                    </button>
+                </div>               
+            </form>
+        </div>
+    </div>
+</div>

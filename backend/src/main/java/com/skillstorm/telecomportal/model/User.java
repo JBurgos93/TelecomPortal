@@ -20,7 +20,8 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, updatable = false)
 	private int id;
-	private String username;
+	@Column(unique=true)
+	private String email;
 	private String password;
 	private String firstname;
 	private String lastname;
@@ -32,9 +33,9 @@ public class User implements Serializable {
 
 	}
 
-	public User(int id, String username, String password, String firstname, String lastname) {
+	public User(int id, String email, String password, String firstname, String lastname) {
 		this.id = id;
-		this.username = username;
+		this.email = email;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -48,12 +49,12 @@ public class User implements Serializable {
 		this.id = userId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -82,7 +83,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [Id=" + id + ", Username=" + username + ", Password=" + password + ", Name=" + firstname
+		return "User [Id=" + id + ", Email=" + email + ", Password=" + password + ", Name=" + firstname
 				+ ", Lastname=" + lastname + "]";
 	}
 

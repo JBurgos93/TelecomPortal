@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillstorm.telecomportal.model.Plan;
 import com.skillstorm.telecomportal.model.User;
 import com.skillstorm.telecomportal.service.UserService;
 
@@ -31,9 +30,9 @@ public class UserController {
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 	
-	@GetMapping("/find/{id}")
-    public ResponseEntity<User> getUser(@PathVariable("id") Integer id) {
-        User user = userService.getUser(id);
+	@GetMapping("/find/{email}")
+    public ResponseEntity<User> getUser(@PathVariable("email") String email) {
+        User user = userService.getUser(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 	
@@ -54,6 +53,11 @@ public class UserController {
 		userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+	@GetMapping("/emailExists/{email}")
+	public ResponseEntity<Boolean> getEmailExists(@PathVariable("email") String email) {
+		return new ResponseEntity<Boolean>(userService.existsByEmail(email), HttpStatus.OK);
+	}
 	
 	@GetMapping("/bill")
 	public ResponseEntity<Integer> getMonthlyBill(@RequestBody User user) {

@@ -1,12 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/internal/operators/map';
 import { Device } from '../models/device.model';
+import { User } from '../models/user.model';
 @Injectable({
     providedIn: 'root'
 })
 export class UserDevicesService {
     private devices: Device[] = [];
     
-    constructor() { }
+    constructor(private http: HttpClient) { }
 
     createDevice(id: String, phonePlanID: Number, phoneNumber: Number) : void {
         const device: Device = {
@@ -17,8 +21,9 @@ export class UserDevicesService {
         this.devices.push(device);
     }
 
-    getDevices = () => {
-        return this.devices;
+    getDevices(): Observable<Device[]>{
+        let user = JSON.parse(localStorage.getItem("user")  || '{}');
+        return this.http.get<Device[]>("http://localhost:8080/device/all/user/" + user.id);
     }
 
     deleteDevice(id: String){

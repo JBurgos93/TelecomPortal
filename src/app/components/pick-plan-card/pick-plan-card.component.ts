@@ -35,12 +35,14 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     ngOnInit(): void { 
-        this.getDevices();
+        this.userDevicesService.getDevices().subscribe(result => { 
+            this.devices = result;
+            console.log(this.devices);
+        });
         this.checkButtonEnabling();}
 
     getDevices = () => {
-        this.devices = [];
-        let temp: Device[] = this.userDevicesService.getDevices();
+        let temp: Device[] = this.devices!;
         temp.forEach(device => {
             if(device.phonePlanID == this.id){
                 this.devices?.push(device);
@@ -70,7 +72,7 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     deletePlan = () => {
-        this.userPlansService.removePlan(<Number>this.id);
+        this.userPlansService.removePlan(<String>this.name); // this is where the splice update is overriden
     }
 
     hide1 = () => {
