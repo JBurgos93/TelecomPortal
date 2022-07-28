@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit {
   logoutUser() {
     this.loginService.logout();
     window.location.href="/login";
-    //location.reload();
   }
 
 }

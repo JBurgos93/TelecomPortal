@@ -7,10 +7,6 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserDataService {
-    // private user: User = {
-    //     email: "",
-    //     password: ""
-    // }
 
     constructor(private http: HttpClient) { }
 

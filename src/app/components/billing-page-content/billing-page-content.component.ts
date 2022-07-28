@@ -35,6 +35,5 @@ export class BillingPageContentComponent implements OnInit {
                     this.total += +plan.cost;
             })
         })
-        console.log(this.total);
     }
 }

@@ -37,30 +37,15 @@ export class PickPlanCardComponent implements OnInit {
 
     ngOnInit(): void { 
         this.userDevicesService.getDevices().subscribe(result => { 
-            this.devices = result;
-            console.log(this.devices);
-            //this.getDevices();
+            this.devices = result
             this.devicePerPlanCount = this.devices?.filter( 
                 (device) => {
                      return device.plan === this.id;
                 }).length;
-            console.log(this.devicePerPlanCount + " " + this.id);
             this.currentDevices = this.devicePerPlanCount;
         });
         this.checkButtonEnabling();
     }
-
-
-    // getDevices = () => {
-    //     let temp: Device[] = this.devices!;
-    //     console.log("in here")
-    //     temp.forEach(device => {
-    //         if(device.plan == this.id){
-    //             console.log("here?")
-    //             this.devices?.push(device);
-    //         }
-    //     });
-    // }
 
     checkButtonEnabling = () => {
         if(<Number>this.currentDevices <= 0){
@@ -98,15 +83,11 @@ export class PickPlanCardComponent implements OnInit {
     submitRemoveDevice = () => {
         this.userDevicesService.deleteDevice(<number><unknown>this.phoneID?.toString().split(" : ")[0])
             .subscribe({
-                next: (data) => console.log(data),
                 error: (e) => console.error(e)
             });
-        console.log(this.phoneID?.toString().split(" : ")[0]);
-        console.log("in submitRemoveDevice");
         this.displayStyle2 = "none";
         this.userPlansService.decDeviceCount(<Number>this.id);
         this.currentDevices = <number>this.currentDevices - 1;
-        //this.getDevices();
         this.checkButtonEnabling();
     }
 
@@ -115,21 +96,15 @@ export class PickPlanCardComponent implements OnInit {
             .subscribe({
                 next: (data) => {
 
-                 console.log(data);
                  this.userDevicesService.getDevices().subscribe(result => { 
                     this.devices = result;
-                    console.log(this.devices);
-                    //this.getDevices();
                 });
                 },
                 error: (e) => console.error(e)
             });
-        console.log("in submitDevice");
         this.displayStyle1 = "none";
         this.userPlansService.incDeviceCount(<Number>this.id);
-        this.currentDevices = <number>this.currentDevices + 1;
-        //this.getDevices();
-        
+        this.currentDevices = <number>this.currentDevices + 1;        
         this.checkButtonEnabling();
     }
 }

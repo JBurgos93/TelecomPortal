@@ -13,22 +13,12 @@ export class AddDeviceModalComponent implements OnInit {
     public phoneNumber?: Number;
     public phonePlanID?: Number;
     displayStyle = "none";
-    //public show = false;
 
     constructor(private userDevicesService: UserDevicesService) { }
 
     ngOnInit(): void { }
 
-    // openPopup() {
-    //     this.displayStyle = "block";
-    //     this.deviceModalService.setShow(true);
-    //   }
-    //   closePopup() {
-    //     this.displayStyle = "none";
-    //     this.deviceModalService.setShow(false);
-    // }
     addDevice(){
-        console.log("in addDevice");
         this.userDevicesService.createDevice(<number>this.id, <number>this.phonePlanID, <Number>this.phoneNumber)
             .subscribe();
     }

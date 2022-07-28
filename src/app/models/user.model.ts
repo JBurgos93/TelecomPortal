@@ -1,16 +1,3 @@
-// export interface User {
-//     email: string;
-//     password: string;
-//     /*
-//     constructor(email: string, password: string){
-//         this.email = email;
-//         this.password = password;
-//     }
-//     */
-// }
-
-
-// Should be this
 export class User {
 
     private firstname : string;

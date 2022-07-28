@@ -22,8 +22,6 @@ export class UserDevicesService {
             user,
             plan
         }
-        console.log("create devices called");
-        console.log(JSON.stringify(device));
         return this.http.post<Device>("http://localhost:8080/device/add", JSON.stringify(device)
             ,{ headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8') });
     }
