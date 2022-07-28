@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.skillstorm.telecomportal.exception.DeviceNotFoundException;
 import com.skillstorm.telecomportal.exception.UserNotFoundException;
 import com.skillstorm.telecomportal.model.Device;
+import com.skillstorm.telecomportal.model.Plan;
 import com.skillstorm.telecomportal.repository.DeviceRepository;
 
 @Service
@@ -47,6 +48,10 @@ public class DeviceService {
 	public List<Device> getAllDevicesByUser(Integer id) {
 		return deviceRepository.findByUserId(id)
 				.orElseThrow(() -> new UserNotFoundException("User by ID " + id + " was not found"));
+	}
+
+	public List<Plan> findDistinctPlans(Integer id) {
+		return deviceRepository.findDistinctPlansById(id);
 	}
 	
 }

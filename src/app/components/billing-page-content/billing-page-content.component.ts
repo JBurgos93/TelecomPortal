@@ -18,7 +18,7 @@ export class BillingPageContentComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.phonePlans = this.userPlansService.getActivePlans();
+        this.phonePlans = this.userPlansService.getActivePlansArray();
         this.calculateTotalBill();
     }
 

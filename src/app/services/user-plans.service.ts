@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControlDirective } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
+import { Device } from '../models/device.model';
 import { PhonePlan } from '../models/phone-plan.model';
 
 @Injectable({
@@ -17,21 +20,24 @@ export class UserPlansService {
         { id: 6, name: "Individual Plan 3", cost: 30, description: "Why do you have 6 devices/tablets?.", currentDevices: 0, maxDevices: 6, enableAdd: true}
     ];
     // List of the user's active phone plans
-    private activePlans: PhonePlan[] = [
-        { id: 1, name: "Family Plan 1", cost: 60, description: "Affordable for the whole family.", currentDevices: 0, maxDevices: 8, enableAdd: true},
-        { id: 6, name: "Individual Plan 3", cost: 30, description: "Why do you have 6 devices/tablets?.", currentDevices: 0, maxDevices: 6, enableAdd: true}
-    ];
+    private activePlans: PhonePlan[] = [];
 
-    constructor() {
-        // Comparing the active plans to all plans
-        this.activePlans.forEach(activePlan => {
-            this.phonePlans.forEach(phonePlan => {
-                if(activePlan.id == phonePlan.id){
-                    phonePlan.enableAdd = false;
-                    localStorage.setItem("plans", JSON.stringify(this.phonePlans));
-                }
-            });
-        });
+    constructor(private http: HttpClient) {
+
+        this.getActivePlans().subscribe(
+            result => {
+                this.activePlans = result;
+                // Comparing the active plans to all plans
+                this.activePlans.forEach(activePlan => {
+                    this.phonePlans.forEach(phonePlan => {
+                        if(activePlan.id == phonePlan.id){
+                            phonePlan.enableAdd = false;
+                            localStorage.setItem("plans", JSON.stringify(this.phonePlans));
+                        }
+                    });
+                });
+            }
+        );        
     }
 
     createPlans() : void{ }
@@ -56,7 +62,12 @@ export class UserPlansService {
     getAllPlans() : PhonePlan[] {
         return this.phonePlans;
     }
-    getActivePlans() : PhonePlan[] {
+    getActivePlans() : Observable<PhonePlan[]> {
+        let user = JSON.parse(localStorage.getItem("user")  || '{}');
+        return this.http.get<PhonePlan[]>("http://localhost:8080/device/plans/" + user.id);
+    }
+
+    getActivePlansArray(): PhonePlan[] {
         return this.activePlans;
     }
 

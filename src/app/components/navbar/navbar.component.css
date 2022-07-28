@@ -14,3 +14,9 @@
     background-color:lightgreen;
     /* border-color: #285e8e; */
 }
+
+.btn-danger:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color:rgb(238, 155, 144);
+    /* border-color: #285e8e; */
+}

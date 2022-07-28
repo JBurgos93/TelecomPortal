@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.skillstorm.telecomportal.model.Device;
+import com.skillstorm.telecomportal.model.Plan;
 
 @Repository
 public interface DeviceRepository extends JpaRepository<Device, Long>{
@@ -21,5 +22,9 @@ public interface DeviceRepository extends JpaRepository<Device, Long>{
 	void deleteDeviceById(@Param("id")Long id);
 	
 	Optional<List<Device>> findByUserId(Integer id);
+
+	@Modifying
+	@Query("select distinct d.plan from Device d where d.user.id = :id")
+	List<Plan> findDistinctPlansById(Integer id);
 
 }

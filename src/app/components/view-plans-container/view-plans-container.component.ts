@@ -15,7 +15,7 @@ export class ViewPlansContainerComponent implements OnInit {
     constructor(private userPlansService: UserPlansService) { }
 
     ngOnInit(){
-        this.activePlans = this.userPlansService.getActivePlans();
+        this.activePlans = this.userPlansService.getActivePlansArray();
     }
 
 }
