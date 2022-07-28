@@ -29,6 +29,7 @@ export class LoginFormService {
   logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("plans");
     return true;
   }
 
