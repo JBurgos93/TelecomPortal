@@ -28,6 +28,8 @@ export class AddDeviceModalComponent implements OnInit {
     //     this.deviceModalService.setShow(false);
     // }
     addDevice(){
+        console.log("in addDevice");
         this.userDevicesService.createDevice(<number>this.id, <number>this.phonePlanID, <Number>this.phoneNumber)
+            .subscribe();
     }
 }

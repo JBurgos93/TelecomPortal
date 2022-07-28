@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
@@ -24,7 +24,8 @@ export class UserDevicesService {
         }
         console.log("create devices called");
         console.log(JSON.stringify(device));
-        return this.http.post<Device>("http://localhost:8080/device/add", JSON.stringify(device));
+        return this.http.post<Device>("http://localhost:8080/device/add", JSON.stringify(device)
+            ,{ headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8') });
     }
 
     getDevices(): Observable<Device[]>{
@@ -33,6 +34,6 @@ export class UserDevicesService {
     }
 
     deleteDevice(id: Number): Observable<unknown>{
-        return this.http.delete("http://localhost:8080/device/" + id);
+        return this.http.delete("http://localhost:8080/device/delete/" + id);
     }
 }

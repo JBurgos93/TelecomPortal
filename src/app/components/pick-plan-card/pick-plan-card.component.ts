@@ -87,7 +87,13 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     submitRemoveDevice = () => {
-        this.userDevicesService.deleteDevice(<Number>this.phoneID);
+        this.userDevicesService.deleteDevice(<number><unknown>this.phoneID?.toString().split(" : ")[0])
+            .subscribe({
+                next: (data) => console.log(data),
+                error: (e) => console.error(e)
+            });
+        console.log(this.phoneID?.toString().split(" : ")[0]);
+        console.log("in submitRemoveDevice");
         this.displayStyle2 = "none";
         this.userPlansService.decDeviceCount(<Number>this.id);
         this.currentDevices = <number>this.currentDevices - 1;
@@ -97,6 +103,11 @@ export class PickPlanCardComponent implements OnInit {
 
     submitDevice = () => {
         this.userDevicesService.createDevice(<number>this.phoneID, <number>this.id, <Number>this.phoneNumber)
+            .subscribe({
+                next: (data) => console.log(data),
+                error: (e) => console.error(e)
+            });
+        console.log("in submitDevice");
         this.displayStyle1 = "none";
         this.userPlansService.incDeviceCount(<Number>this.id);
         this.currentDevices = <number>this.currentDevices + 1;

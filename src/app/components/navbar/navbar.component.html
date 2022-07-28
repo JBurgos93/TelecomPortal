@@ -17,10 +17,10 @@
     </div>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <Button class="nav-link align-right btn btn-light" [routerLink]="['/sign-up']">Sign Up</Button>
+            <Button *ngIf="!loggedIn" class="nav-link align-right btn btn-light" [routerLink]="['/sign-up']">Sign Up</Button>
         </li>
         <li class="nav-item">
-            <Button class="nav-link align-right btn btn-light" style="margin-left: 20px; margin-right: 20px;" [routerLink]="['/login']">Login</Button>
+            <Button *ngIf="!loggedIn" class="nav-link align-right btn btn-light" style="margin-left: 20px; margin-right: 20px;" [routerLink]="['/login']">Login</Button>
             <!-- <Button *ngIf="!loggedIn" class="nav-link align-right" [routerLink]="['/sign-up']">Sign Up</Button> -->
         </li>
         <!-- <li class="nav-item">
