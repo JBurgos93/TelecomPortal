@@ -15,7 +15,7 @@ export class UserDevicesService {
     createDevice(id: number, planId: number, phoneNumber: Number): Observable<Device> {
         let user = JSON.parse(localStorage.getItem("user")  || '{}');
         let plans = JSON.parse(localStorage.getItem("plans")   || '{}');
-        let plan = plans[planId];
+        let plan = plans[planId - 1];
         const device = {
             id: id,
             phoneNumber: phoneNumber,

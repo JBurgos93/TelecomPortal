@@ -104,7 +104,15 @@ export class PickPlanCardComponent implements OnInit {
     submitDevice = () => {
         this.userDevicesService.createDevice(<number>this.phoneID, <number>this.id, <Number>this.phoneNumber)
             .subscribe({
-                next: (data) => console.log(data),
+                next: (data) => {
+
+                 console.log(data);
+                 this.userDevicesService.getDevices().subscribe(result => { 
+                    this.devices = result;
+                    console.log(this.devices);
+                    //this.getDevices();
+                });
+                },
                 error: (e) => console.error(e)
             });
         console.log("in submitDevice");
@@ -112,6 +120,7 @@ export class PickPlanCardComponent implements OnInit {
         this.userPlansService.incDeviceCount(<Number>this.id);
         this.currentDevices = <number>this.currentDevices + 1;
         //this.getDevices();
+        
         this.checkButtonEnabling();
     }
 }

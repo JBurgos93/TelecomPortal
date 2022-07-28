@@ -1,27 +1,30 @@
-# TelecomPortal
+# Telecom Portal Earthly Mobile ⛰️
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
+[![Angular package](https://badgen.net/badge/angular/v14.0.0/orange)](https://www.npmjs.com/package/@angular/core)
+[![Bootstrap package](https://badgen.net/badge/bootstrap/v5.1.3/blue)](https://www.npmjs.com/package/bootstrap)
+[![RXJs package version](https://badgen.net/badge/rxjs/v7.5.0/green)](https://www.npmjs.com/package/rxjs)
+[![Passport package](https://badgen.net/badge/passport/v0.6.0/yellow)](https://www.npmjs.com/package/passport)
+[![Concurrently package](https://badgen.net/badge/concurrently/v7.2.2/cyan)](https://www.npmjs.com/package/concurrently)
+![MIT license](https://badgen.net/badge/license/MIT/14019991)
 
-## Development server
+## Description
+Telecom Portal Eartly Mobile provides a platform for you to add and remove your devices to a variety of cellular plans. Get connected with your family and friends with our tempting deals.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
+This service runs with a MySQL server on the backend.
+Spring Boot is used to establish a RESTful connection with the database.
+Angular is used to connect the webstite with the Spring Boot App.
 
-## Code scaffolding
+Install the required dependencies by running:
+#### `npm install`
+Create a MySQL or any other database for the server side and establish a connection through the properties file. (Note: For database changes, connector dependencies should be added)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How To Launch The App
+Start the application from the project directory by running:
 
-## Build
+#### `ng serve`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+and from the /backend directory, start up your Spring Boot App with whatever method you prefer.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Runs the app in the development mode.\
+Open [http://localhost:4200](http://localhost:4200) to view it in your browser.
