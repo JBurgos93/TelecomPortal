@@ -14,6 +14,7 @@ export class PickPlanCardComponent implements OnInit {
 
     public phonePlan?: PhonePlan;
     public devices?: Device[] = [];
+    public devicePerPlanCount?: number;
 
     @Input() id?: Number;
     @Input() name?: String;
@@ -39,8 +40,16 @@ export class PickPlanCardComponent implements OnInit {
             this.devices = result;
             console.log(this.devices);
             //this.getDevices();
+            this.devicePerPlanCount = this.devices?.filter( 
+                (device) => {
+                     return device.plan === this.id;
+                }).length;
+            console.log(this.devicePerPlanCount + " " + this.id);
+            this.currentDevices = this.devicePerPlanCount;
         });
-        this.checkButtonEnabling();}
+        this.checkButtonEnabling();
+    }
+
 
     // getDevices = () => {
     //     let temp: Device[] = this.devices!;
