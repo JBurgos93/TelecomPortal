@@ -5,7 +5,8 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
+// A custom UserDetails implementation to store user information for later encapsulation
+// into Authentication objects
 public class CustomUserDetails implements UserDetails {
     
 

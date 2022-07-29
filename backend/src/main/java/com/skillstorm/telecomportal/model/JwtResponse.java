@@ -1,5 +1,6 @@
 package com.skillstorm.telecomportal.model;
 
+// Custom Response class for response after token generation
 public class JwtResponse {
     String token;
 

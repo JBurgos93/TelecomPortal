@@ -18,7 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.skillstorm.telecomportal.helper.JwtUtil;
 import com.skillstorm.telecomportal.service.CustomUserDetailsService;
 
-
+// JWT Auth filter that executes only once per request
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
 
@@ -31,11 +31,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        
+        // Setting Header for Authorization
         String requestTokenHeader = request.getHeader("Authorization");
         String username = null;
         String jwtToken = null;
-
+        //Using Bearer token for authorization
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
             jwtToken = requestTokenHeader.substring(7);
 
@@ -44,7 +44,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            // Checking and loading the user by username/password combo and storing it in the session
             UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =  new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

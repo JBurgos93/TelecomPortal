@@ -1,5 +1,7 @@
 package com.skillstorm.telecomportal.model;
 
+// Custom class that is used as request for token generation
+// Providing necessary methods for credentials
 public class JwtRequest {
     String username;
     String password;

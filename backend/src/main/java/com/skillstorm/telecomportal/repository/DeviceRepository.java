@@ -22,7 +22,7 @@ public interface DeviceRepository extends JpaRepository<Device, Long>{
 	void deleteDeviceById(@Param("id")Long id);
 	
 	Optional<List<Device>> findByUserId(Integer id);
-
+	// Query for finding distinct plans in the device table
 	@Modifying
 	@Query("select distinct d.plan from Device d where d.user.id = :id")
 	List<Plan> findDistinctPlansById(Integer id);

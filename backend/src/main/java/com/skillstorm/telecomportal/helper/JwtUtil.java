@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+// Parses the token into user and generates the token from the user object
 @Component
 public class JwtUtil {
 

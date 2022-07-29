@@ -28,7 +28,7 @@ public class JwtController {
 
     @Autowired
     private JwtUtil jwtUtil;
-    
+    // POST request with credentials as request body for JWT generation
     @RequestMapping(value = "/token", method = RequestMethod.POST)
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
         System.out.println(jwtRequest);
