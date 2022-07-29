@@ -1,6 +1,14 @@
-<div class="card" >
+<!-- <div class="card" >
     <div class="card-body">
         <h5 class="card-title">Your Current Phone Plans</h5>
+        <div style="display: inline-block; grid-row:auto;">
+            <app-pick-plan-card style="width: 18rem; float: left; padding:10px" *ngFor="let phonePlan of activePlans" [id]="phonePlan.id" [name]="phonePlan.name" [cost]="phonePlan.cost" [description]="phonePlan.description" [currentDevices]="phonePlan.currentDevices" [maxDevices]="phonePlan.maxDevices"></app-pick-plan-card>
+        </div>
+    </div>
+</div> -->
+<div>
+    <div class="card-body">
+        <h5 class="card" style="padding:5px;">Your Current Phone Plans</h5>
         <div style="display: inline-block; grid-row:auto;">
             <app-pick-plan-card style="width: 18rem; float: left; padding:10px" *ngFor="let phonePlan of activePlans" [id]="phonePlan.id" [name]="phonePlan.name" [cost]="phonePlan.cost" [description]="phonePlan.description" [currentDevices]="phonePlan.currentDevices" [maxDevices]="phonePlan.maxDevices"></app-pick-plan-card>
         </div>

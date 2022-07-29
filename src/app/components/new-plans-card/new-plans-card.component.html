@@ -1,9 +1,12 @@
-<div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{name}}</h5>
-      <p class="card-text">{{description}}</p>
-      <p class="card-text">Price: {{cost}}</p>
-      <p class="card-text">Max Devices: {{maxDevices}}</p>
-      <button (click)="addPlan()" class="btn btn-primary" *ngIf="enableAdd">Add Plan</button>
+<div class="card" [class]="maxDevices==2 ? 'bronze':maxDevices==4 ? 'silver':'gold'" style="border-radius:20%;" >
+    
+    <div class="card-header" style="padding-top: 20px;">
+        <h5>{{name}}</h5>
     </div>
-  </div>
+    <div class="card-body">
+        <h3 class="card-text">Price: ${{cost}}</h3>
+        <p class="card-text">{{description}}</p>
+        <p class="card-text">Device Limit: {{maxDevices}}</p>
+        <button (click)="addPlan()" class="btn btn-primary" style="border-radius:10px;" *ngIf="enableAdd"><h3 class="text-white">Add Plan</h3></button>
+    </div>
+</div>

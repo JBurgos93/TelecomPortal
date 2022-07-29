@@ -1,7 +1,7 @@
-<div class="card">
+<!-- <div class="card">
     <div class="card-header">
       Billing Summary
-    </div>
+    </div> -->
     <div class="card-body">
         <table class="table">
             <thead>
@@ -13,16 +13,16 @@
             <tbody>
                 <tr *ngFor="let phonePlan of phonePlans">
                     <td>{{phonePlan.name}}</td>
-                    <td>device.count X $ {{phonePlan.cost}}</td>
+                    <td>${{phonePlan.cost}}</td>
                 </tr>
                 
             </tbody>
             <thead>
                 <tr>
                     <th scope="col">Total:</th>
-                    <td scope="col">{{total}}</td>
+                    <td scope="col">${{total}}</td>
                 </tr>
             </thead>
         </table>
     </div>
-  </div>
+  <!-- </div> -->

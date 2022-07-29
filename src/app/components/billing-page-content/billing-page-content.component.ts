@@ -29,11 +29,27 @@ export class BillingPageContentComponent implements OnInit {
     }
 
     calculateTotalBill(){
-        this.allDevices.forEach( device => {
-            this.phonePlans.forEach( plan => {
-                if (plan.id == device.plan)
-                    this.total += +plan.cost;
+        let plans = this.userPlansService.getAllPlans();
+        //console.log(`calculate bill: ${JSON.stringify(plans)}`);
+        let sum = 0;
+        let temp = true;
+        for(let i=1; i<7; i++){
+            temp = true;
+            this.allDevices.forEach( device => {
+                //console.log(`device.plan == i -> ${device.plan == i}`)
+                if(device.plan == i && temp){
+                    sum += <number>plans[i-1].cost;
+                    //console.log(`${}`);
+                    temp = false;
+                }
             })
-        })
+        }
+        this.total = sum;
+        // this.allDevices.forEach( device => {
+        //     this.phonePlans.forEach( plan => {
+        //         if (plan.id == device.plan)
+        //             this.total += <number>plan.cost;
+        //     })
+        // })
     }
 }

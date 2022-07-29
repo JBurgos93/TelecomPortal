@@ -1,8 +1,9 @@
-<div class="card">
+<div class="card" [class]="maxDevices==2 ? 'bronze':maxDevices==4 ? 'silver':'gold'" style="border-radius:20%;" style="border-radius:20%;">
+    <h5 style="padding-top: 20px">{{name}}</h5>
+    <hr>
     <div class="card-body">
-        <h5 class="card-title">{{name}}</h5>
+        <h3 class="card-text">${{cost}}</h3>
         <p class="card-text">{{description}}</p>
-        <p class="card-text">Monthly Cost: {{cost}}</p>
         <p class="card-text">Devices: {{currentDevices}} / {{maxDevices}}</p>
         <div style="display: inline-block; grid-row:auto;">
             <button (click)="addDevice()" class="btn btn-primary" *ngIf="enableAdd">Add Device</button>
@@ -30,7 +31,7 @@
                         </div>
                 
                         <label for="PhoneNumber">Phone Number</label>
-                        <input [(ngModel)]="phoneNumber" class="form-control" name="PhoneNumber" id="PhoneNumber" type="tel" required maxlength="30" #PhoneNumber="ngModel"/>
+                        <input [(ngModel)]="phoneNumber" class="form-control" name="PhoneNumber" id="PhoneNumber" type="tel" required maxlength="10" #PhoneNumber="ngModel"/>
                         <div class="alert" *ngIf="PhoneNumber.invalid">
                             <div *ngIf="PhoneNumber.errors?.['required']">Phone number is required</div>
                         </div>
@@ -62,12 +63,12 @@
                 <form id="remove-device" (ngSubmit)="submitRemoveDevice()" #submitRemoveDeviceForm>
                     <div class="form-group">
 
-                        <select [(ngModel)]="phoneID" class="form-control" placeholder="Select Device"  name="PhoneID" id="PhoneID" #PhoneID="ngModel">
+                        <select [(ngModel)]="phoneID" class="form-control" placeholder="Select Device"  name="PhoneID" id="PhoneID" #PhoneID="ngModel" required>
                             <option *ngFor="let device of devices" (value)="device.id">{{device.id}} : {{device.phoneNumber}}</option>
                         </select>
 
                         <div style="margin-top: 5px;">
-                            <input class="btn btn-success submit-button" type="submit" value="Remove Device"/>
+                            <input class="btn btn-success submit-button" type="submit" value="Remove Device" [disabled]=""/>
                         </div>
                     </div>
                 </form>

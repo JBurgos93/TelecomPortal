@@ -1,4 +1,19 @@
-<div class="home-container">
-    <app-plan-container class="content-container"></app-plan-container>
-    <app-billing-container class="content-container"></app-billing-container>
+<div class="background-container">
+    <div class="profile-container">
+        <div class="card">
+            <h3 class="card-header">
+                Profile
+            </h3>
+            <div class="card-body">
+                <img src="../../../assets/defaultprofile.jpg">
+                <h5 class="card-title" style="margin-top:5px;">{{ user.firstname }} {{ user.lastname }}</h5>
+                <p class="card-text">{{ user.email }}</p>
+                <!-- <a [routerLink]="['/plans']" class="btn btn-primary">Manage Phone Plans</a> -->
+            </div>
+        </div>
+    </div>
+    <div class="home-container">
+        <app-plan-container class="content-container"></app-plan-container>
+        <app-billing-container class="content-container"></app-billing-container>
+    </div>
 </div>

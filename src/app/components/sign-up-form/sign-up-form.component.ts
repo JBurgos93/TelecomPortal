@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { SignUpFormService } from './sign-up-form.service';
 import { MustMatch } from './helpers/must-match.validator';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-sign-up-form',
     templateUrl: './sign-up-form.component.html',
@@ -16,7 +17,8 @@ export class SignUpFormComponent implements OnInit {
 
   constructor(
     private fb : FormBuilder,
-    private signupService : SignUpFormService    
+    private signupService : SignUpFormService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -41,11 +43,15 @@ export class SignUpFormComponent implements OnInit {
         );
     
     this.signupService.registration(user).subscribe({
-      next: () => this.regForm.reset(), 
+      next: () => {
+        this.regForm.reset();
+        //window.location.replace('[/login]');
+        this.router.navigate(['/login']);
+      }, 
       error: (err: any) => { 
           this.emailExists = true;
           console.log(err);
         }
-    });    
+    });
   }
 }

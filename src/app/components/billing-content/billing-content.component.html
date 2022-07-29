@@ -1,18 +1,17 @@
 <div class="card">
     <div class="card-header">
-        Billing
+        <h5 class="card-title">Billing</h5>
     </div>
     <div class="card-body">
-        <h5 class="card-title">Billing</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <button (click)="showBilling()" class="btn btn-primary">View Details</button>
+        <p class="card-text">View a summary of your monthly expenses, plan-by-plan.</p>
+        <button (click)="showBilling()" class="btn btn-primary">Details</button>
     </div>
 </div>
 <!-- Start of Modal -->
-<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle}">
+<div class="modal" tabindex="-1" role="dialog" style="margin-top:10rem;" [ngStyle]="{'display': displayStyle}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="text-align:center">
                 <h4 class="modal-title">Monthly Billing Summary</h4>
             </div>
             <!-- Start of Form -->
