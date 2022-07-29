@@ -1,33 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="nav-link" [routerLink]="['/']"><img src="../../../assets/earthlymobilelogo2.png"></a>
+    <a class="nav-link" [routerLink]="['/']" style="padding:0px;"><img src="../../../assets/earthlymobilelogo1.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <!-- <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/home']">Home (temporary button)</a>
-            </li> -->
+        <ul class="navbar-nav mr-auto center">
             <li class="nav-item">
-                <a *ngIf="loggedIn" class="nav-link disabled">Hello, {{ user.firstname }}</a>
+                <h3 *ngIf="loggedIn" class="nav-link disabled">Hello, {{ user.firstname }}</h3>
             </li>
         </ul>
-        
     </div>
+
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <Button *ngIf="!loggedIn" class="nav-link align-right btn btn-light" [routerLink]="['/sign-up']">Sign Up</Button>
+            <Button *ngIf="!loggedIn" class="nav-link align-right btn btn-light highlight-green" [routerLink]="['/sign-up']">Sign Up</Button>
         </li>
         <li class="nav-item">
-            <Button *ngIf="!loggedIn" class="nav-link align-right btn btn-light" style="margin-left: 20px; margin-right: 20px;" [routerLink]="['/login']">Login</Button>
-            <!-- <Button *ngIf="!loggedIn" class="nav-link align-right" [routerLink]="['/sign-up']">Sign Up</Button> -->
+            <Button *ngIf="!loggedIn" class="nav-link align-right btn btn-light highlight-green" style="margin-left: 20px; margin-right: 20px;" [routerLink]="['/login']">Login</Button>
         </li>
+        <li class="nav-item">
+            <Button *ngIf="loggedIn" class="nav-link align-right btn btn-light highlight-blue" [routerLink]="['/home']">Account</Button>
+        </li>
+        <li class="nav-item">
+            <Button *ngIf="loggedIn" class="nav-link align-right btn btn-light highlight-red" style="margin-left: 20px; margin-right: 20px;" (click)="logoutUser()">Logout</Button>
+        </li>
+        <!-- <Button *ngIf="!loggedIn" class="nav-link align-right" [routerLink]="['/sign-up']">Sign Up</Button> -->
         <!-- <li class="nav-item">
             <Button *ngIf="!loggedIn" class="nav-link align-right" [routerLink]="['/login']">Login</Button>
         </li> -->
-        <li class="nav-item">
-            <Button *ngIf="loggedIn" class="nav-link align-right btn btn-danger" style="margin-left: 20px; margin-right: 20px;" (click)="logoutUser()">Logout</Button>
-        </li>
     </ul>
   </nav>
