@@ -9,7 +9,9 @@ import { PhonePlan } from 'src/app/models/phone-plan.model';
 })
 
 export class ViewPlansContainerComponent implements OnInit {
-    
+    /*
+        Is on the Plan Page. Generates a card for each active plan on the user's account. Passes each card it's own phone plan data.
+    */
     public activePlans: PhonePlan[] = [];
 
     constructor(private userPlansService: UserPlansService) { }

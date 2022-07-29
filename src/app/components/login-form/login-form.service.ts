@@ -6,6 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class LoginFormService {
 
+    /*
+        Manages user login token
+    */
   constructor(private http:HttpClient) { }
 
   generateToken(credentials: any) {

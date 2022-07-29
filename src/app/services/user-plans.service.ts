@@ -11,14 +11,6 @@ import { PhonePlan } from '../models/phone-plan.model';
 export class UserPlansService {
 
     // List of all phone plans
-    // private phonePlans: PhonePlan[] = [
-    //     { id: 1, name: "Family Plan 1", cost: 60, description: "Affordable for the whole family.", currentDevices: 0, maxDevices: 8, enableAdd: true},
-    //     { id: 2, name: "Family Plan 2", cost: 80, description: "Great value for the price, I guess.", currentDevices: 0, maxDevices: 12, enableAdd: true},
-    //     { id: 3, name: "Family Plan 3", cost: 100, description: "Most expensive.", currentDevices: 0, maxDevices: 16, enableAdd: true},
-    //     { id: 4, name: "Individual Plan 1", cost: 10, description: "Affordable for your lonely self.", currentDevices: 0, maxDevices: 2, enableAdd: true},
-    //     { id: 5, name: "Individual Plan 2", cost: 20, description: "Twice the cost, twice the coverage.", currentDevices: 0, maxDevices: 4, enableAdd: true},
-    //     { id: 6, name: "Individual Plan 3", cost: 30, description: "Why do you have 6 devices/tablets?.", currentDevices: 0, maxDevices: 6, enableAdd: true}
-    // ];
     private phonePlans: PhonePlan[] = [
         { id: 1, name: "Basic Bronze", cost: 29, description: "6G, 8 GB Data.", currentDevices: 0, maxDevices: 2, enableAdd: true},
         { id: 2, name: "Enhanced Bronze", cost: 39, description: "6G, 16 GB Data.", currentDevices: 0, maxDevices: 2, enableAdd: true},
@@ -35,7 +27,6 @@ export class UserPlansService {
         this.getActivePlans().subscribe(
             result => {
                 this.activePlans = result;
-                // Comparing the active plans to all plans
                 this.activePlans.forEach(activePlan => {
                     this.phonePlans.forEach(phonePlan => {
                         if(activePlan.id == phonePlan.id){
@@ -59,11 +50,6 @@ export class UserPlansService {
         }
     }
     getPlan(id: number) : PhonePlan{
-        // console.log(id);
-        // let temp = id - 1;
-        // console.log(temp);
-        // console.log(this.phonePlans);
-        // console.log(this.phonePlans[id-1]);
         return this.phonePlans[id-1];
     }
     decDeviceCount(id: Number) : void{

@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 })
 
 export class SignUpFormComponent implements OnInit {
-
+  /*
+    Is in the Sign Up page. Handles the Sign Up Form and submitting the requests to create a new user. Redirects the user to the log in page.
+  */
   regForm!:FormGroup
   public emailExists = false;
 
@@ -45,7 +47,6 @@ export class SignUpFormComponent implements OnInit {
     this.signupService.registration(user).subscribe({
       next: () => {
         this.regForm.reset();
-        //window.location.replace('[/login]');
         this.router.navigate(['/login']);
       }, 
       error: (err: any) => { 

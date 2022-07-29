@@ -17,29 +17,19 @@ export class UserDevicesService {
 
     updateDeviceList(){
         this.getDevices().subscribe(result => {
-            console.log(this.devices);
             this.devices = result;
-            console.log(this.devices);
         });
     }
 
     createDevice(id: number, planId: number, phoneNumber: Number): Observable<Device> {
-        console.log("HERE3");
         let user = JSON.parse(localStorage.getItem("user")  || '{}');
-        //let plans = JSON.parse(localStorage.getItem("plans")   || '{}');
-        // let plan = plans[planId - 1];
         let plan = this.userPlansService.getPlan(planId);
-        console.log("HERE9");
-        console.log(plan);
-        console.log("HERE4");
         const device = {
             id: id,
             phoneNumber: phoneNumber,
             user,
             plan
         }
-        console.log("HERE5");
-        console.log(device);
         return this.http.post<Device>("http://localhost:8080/device/add", JSON.stringify(device)
             ,{ headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8') });
     }

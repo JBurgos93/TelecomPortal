@@ -7,7 +7,9 @@ import { PhonePlan } from 'src/app/models/phone-plan.model';
     styleUrls: ['./new-plans-container.component.css']
 })
 export class NewPlansContainerComponent implements OnInit {
-
+    /*
+        Is in the Plan Page. Generates a series of cards, one for each Phone Plan in the system. It passes each card it's own phone plan information.
+    */
     public phonePlans: PhonePlan[] = [];
     public enableAddBtns: Boolean[] = [];
 

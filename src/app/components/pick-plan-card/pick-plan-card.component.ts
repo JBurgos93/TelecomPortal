@@ -11,6 +11,11 @@ import { Device } from 'src/app/models/device.model';
     styleUrls: ['./pick-plan-card.component.css']
 })
 export class PickPlanCardComponent implements OnInit {
+    /*
+        Is inside of View-Plans-Container. Each card represents an active plan in the user's account.
+        It tracks how many devices are currently attached to the plan. The remove device button is hidden if no devices are in the plan.
+        The add device button is hidden if the max device limit has already been reached.
+    */
 
     public phonePlan?: PhonePlan;
     public devices: Device[] = [];
@@ -63,7 +68,6 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     deletePlan = () => {
-        console.log(this.devices);
         this.devices.forEach(device => {
             this.userDevicesService.deleteDevice(<number><unknown>device.id)
                 .subscribe(result => {
@@ -82,15 +86,12 @@ export class PickPlanCardComponent implements OnInit {
     }
 
     submitRemoveDevice = () => {
-        
         this.userDevicesService.deleteDevice(<number><unknown>this.phoneID?.toString().split(" : ")[0])
             .subscribe( result => {
                 this.userDevicesService.updateDeviceList();
                 this.userDevicesService.getDevices().subscribe(data => {
                     this.devices = data.filter(x => x.plan == this.id);
-                    console.log(this.devices.length);
                     this.devices = this.userDevicesService.getDevicesById(<Number>this.id);
-                    console.log(this.devices?.length);
                     this.currentDevices = this.devices?.length;
                     this.checkButtonEnabling();
                 });
@@ -99,33 +100,24 @@ export class PickPlanCardComponent implements OnInit {
             this.phoneNumber = new Number;
             this.phoneID = new Number;
         this.displayStyle2 = "none";
-        // this.userPlansService.decDeviceCount(<Number>this.id);
-        // this.currentDevices = <number>this.currentDevices - 1;
-        // this.checkButtonEnabling();
     }
 
     submitDevice = () => {
-        this.userDevicesService.createDevice(<number>this.phoneID, <number>this.id, <Number>this.phoneNumber)
+        if(this.phoneNumber?.toString().length == 10){
+            this.userDevicesService.createDevice(<number>this.phoneID, <number>this.id, <Number>this.phoneNumber)
             .subscribe( result => {
-                // next: (data) => {
-                    // console.log("HERE7");
-                    // console.log(data);
-                    this.userDevicesService.updateDeviceList();
-                    this.userDevicesService.getDevices().subscribe(data => {
-                        this.devices = data.filter(x => x.plan == this.id);
-                        console.log(this.devices.length);
-                        this.devices = this.userDevicesService.getDevicesById(<Number>this.id);
-                        console.log(this.devices?.length);
-                        this.currentDevices = this.devices?.length;
-                        this.checkButtonEnabling();
-                    });
-            //     },
-            //     error: (e) => console.error(e)
+                this.userDevicesService.updateDeviceList();
+                this.userDevicesService.getDevices().subscribe(data => {
+                    this.devices = data.filter(x => x.plan == this.id);
+                    this.devices = this.userDevicesService.getDevicesById(<Number>this.id);
+                    this.currentDevices = this.devices?.length;
+                    this.checkButtonEnabling();
+                });
             });
-        this.phoneNumber = new Number;
-        this.phoneID = new Number;
-        this.displayStyle1 = "none";
-        //this.userPlansService.incDeviceCount(<Number>this.id);
-        //this.currentDevices = <number>this.currentDevices + 1;
+            this.phoneNumber = new Number;
+            this.phoneID = new Number;
+            this.displayStyle1 = "none";
+        }
+        
     }
 }

@@ -10,7 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-       
+    /*
+        Handles the form for user Log In.
+    */
     regForm!:FormGroup
 
     credentials = {

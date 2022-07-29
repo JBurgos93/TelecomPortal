@@ -1,20 +1,16 @@
 .background-container {
+    /*Source: https://www.pexels.com/photo/mountain-covered-snow-under-star-572897/*/
     background-image: url('../../../assets/mountain_background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
 }
 .image-container{
-    /* border-radius: 25px;
-    background-color: white; */
-
     display: inline-flex;
     text-align: center;
     padding: 2rem;
 }
 .image-hover{
-    /* display:block;  */
-    /* z-index:999;  */
     cursor: pointer; 
     -webkit-transition-property: all; 
     -webkit-transition-duration: 0.3s; 
@@ -28,24 +24,11 @@
     max-width: 40%;
     color: white;
     mix-blend-mode: difference;
-    /* text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    /* position: relative; */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(0%, -550%); */
 }
-/* .center-text:hover{
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-} */
 .people-img{
     border-radius: 0%;
 }
 .circle-img{
-    /* padding: 20px; */
-    /* font-size: 30px; */
-    /* width: 30px; */
-    /* text-align: center; */
-    /* text-decoration: none; */
     border-radius: 50%;
 }

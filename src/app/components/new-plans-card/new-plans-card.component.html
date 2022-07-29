@@ -1,8 +1,6 @@
 <div class="card" [class]="maxDevices==2 ? 'bronze':maxDevices==4 ? 'silver':'gold'" style="border-radius:20%;" >
-    
-    <div class="card-header" style="padding-top: 20px;">
-        <h5>{{name}}</h5>
-    </div>
+    <h5 style="padding-top: 20px;">{{name}}</h5>
+    <hr>
     <div class="card-body">
         <h3 class="card-text">Price: ${{cost}}</h3>
         <p class="card-text">{{description}}</p>

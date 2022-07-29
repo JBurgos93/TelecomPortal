@@ -1,6 +1,4 @@
 .card{
-    /* display:block;  */
-    /* z-index:999;  */
     cursor: pointer; 
     -webkit-transition-property: all; 
     -webkit-transition-duration: 0.3s; 
@@ -16,7 +14,7 @@ button{
     background-color: burlywood;
 }
 .silver{
-    background-color: silver;
+    background-color: lightgrey;
 }
 .gold{
     background-color: gold;
